@@ -1,5 +1,13 @@
 #!/bin/sh
 
+#
+# Sandro Santilli <strk@keybit.net>
+# Work in the public domain
+#
+# Version 0.1
+#
+#
+#
 
 usage()
 {

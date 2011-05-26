@@ -1,0 +1,37 @@
+Simple script to generate a QGis project for a PostGIS topology.
+
+Requirements
+------------
+
+ - A posix shell for creating the project file.
+ - QGis >= 1.7.0 with fix for bug #3845 for loading the project file.
+   See https://trac.osgeo.org/qgis/ticket/3845
+ - Oh, well... PostGIS 2.0.0 for creating a topology.
+
+Usage
+-----
+
+Create a project for topology named "mytopo":
+
+ $ ./qgis_pgis_topoview.sh mytopo
+
+Add PGDATABASE env variable if different from your username:
+
+ $  PGDATABASE=mydb ./qgis_pgis_topoview.sh mytopo
+
+Add -x switch if you also want to start qgis:
+
+ $ PGDATABASE=mydb ./qgis_pgis_topoview.sh -x mytopo
+
+The created project file will be created in the present working directory
+and named after the parameters. For the example above:
+
+ topoview_mydb_mytopo.qgs
+
+At time of writing there's no protection against overrides.
+
+License and credits
+-------------------
+
+Work is in the public domain.
+Feel free to send a virtual beer to strk@keybit.net.
