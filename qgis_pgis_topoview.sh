@@ -4,7 +4,7 @@
 # Sandro Santilli <strk@keybit.net>
 # Work in the public domain
 #
-# Version 0.1
+# Version 0.1-dev
 #
 #
 #
@@ -41,9 +41,20 @@ fi
 
 PRJFILE="topo_view_${PGDATABASE}_${TOPONAME}.qgs"
 
-sed -e "s/@@DBNAME@@/${PGDATABASE}/g" \
-    -e "s/@@TOPONAME@@/${TOPONAME}/g" \
-    "${TPL}" > "${PRJFILE}"
+do_write=yes
+if test -e "${PRJFILE}"; then
+	echo -n "Project '${PRJFILE}' already exists, override [y/N] ? "
+	read OVERRIDE
+	if test x${OVERRIDE} != 'xy'; then
+		do_write=no
+	fi
+fi
+
+if test x"$do_write" = xyes; then
+	sed -e "s/@@DBNAME@@/${PGDATABASE}/g" \
+	    -e "s/@@TOPONAME@@/${TOPONAME}/g" \
+	    "${TPL}" > "${PRJFILE}"
+fi
     
 if test x"$do_open" = "xyes"; then
 	qgis "${PRJFILE}"

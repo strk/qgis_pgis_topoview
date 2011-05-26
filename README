@@ -28,7 +28,9 @@ and named after the parameters. For the example above:
 
  topoview_mydb_mytopo.qgs
 
-At time of writing there's no protection against overrides.
+If the file already exist you'll be asked if you want to override it.
+You can still open the file w/out overriding the existing one (maybe 
+because you tweaked it slightly).
 
 License and credits
 -------------------
